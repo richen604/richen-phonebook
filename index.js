@@ -1,5 +1,10 @@
 const express = require("express");
 const app = express();
+const morgan = require("morgan");
+const cors = require("cors");
+
+app.use(cors());
+app.use(express.static("build"));
 
 app.use(express.json());
 
@@ -65,6 +70,11 @@ app.delete("/api/persons/:id", (request, response) => {
   response.status(204).end();
 });
 
+morgan.token("json", (req, res) => {
+  return JSON.stringify(req.body);
+});
+app.use(morgan(":method :url :status :json - :response-time ms"));
+
 app.post("/api/persons", (request, response) => {
   const body = request.body;
   if (!body) {
@@ -90,7 +100,7 @@ app.post("/api/persons", (request, response) => {
   response.json(person);
 });
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
