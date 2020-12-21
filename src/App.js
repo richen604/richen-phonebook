@@ -94,6 +94,7 @@ const App = () => {
         personService
           .update(personToUpdate.id, personObject)
           .then((response) => {
+            console.log(response);
             const newPersons = [...persons];
             newPersons[persons.indexOf(personToUpdate)] = response;
             setPersons(newPersons);
@@ -106,6 +107,7 @@ const App = () => {
             }, 3000);
           })
           .catch((err) => {
+            console.log(err);
             alert(`${personToUpdate.name} already got deleted in the server`);
             const personsUpdated = persons.filter(
               (person) => person.id !== personToUpdate.id
