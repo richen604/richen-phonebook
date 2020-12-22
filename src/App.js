@@ -1,3 +1,4 @@
+/* eslint react/prop-types: 0 */
 import React, { useState, useEffect } from 'react'
 import personService from './services/persons'
 import './index.css'
