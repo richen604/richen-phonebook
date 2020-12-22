@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const uniqueValidator = require("mongoose-unique-validator");
 
 const url = process.env.MONGODB_URI;
 console.log("connecting to", url);
@@ -17,9 +18,18 @@ mongoose
   });
 
 const personSchema = new mongoose.Schema({
-  name: String,
-  number: String,
+  name: {
+    type: String,
+    required: true,
+    minlength: 3,
+  },
+  number: {
+    type: String,
+    required: true,
+    maxlength: 8,
+  },
 });
+personSchema.plugin(uniqueValidator);
 
 personSchema.set("toJSON", {
   transform: (document, returnedObject) => {
@@ -28,5 +38,11 @@ personSchema.set("toJSON", {
     delete returnedObject.__v;
   },
 });
+const Person = mongoose.model("Person", personSchema);
 
-module.exports = mongoose.model("Person", personSchema);
+/*Person.schema.path("name").validate(function (value) {
+  console.log("This is validate value", value);
+}, "Name params too short");
+*/
+
+module.exports = Person;

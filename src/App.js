@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import personService from "./services/persons";
 import "./index.css";
+import { serialize } from "serialize-javascript";
 
 const Notification = ({ message }) => {
   if (message === null) {
@@ -94,7 +95,6 @@ const App = () => {
         personService
           .update(personToUpdate.id, personObject)
           .then((response) => {
-            console.log(response);
             const newPersons = [...persons];
             newPersons[persons.indexOf(personToUpdate)] = response;
             setPersons(newPersons);
@@ -104,15 +104,19 @@ const App = () => {
             setErrorMessage(`${personToUpdate.name} information updated...`);
             setTimeout(() => {
               setErrorMessage(null);
-            }, 3000);
+            }, 5000);
           })
-          .catch((err) => {
-            console.log(err);
+          .catch((error) => {
+            /* Handler for multi client
             alert(`${personToUpdate.name} already got deleted in the server`);
             const personsUpdated = persons.filter(
               (person) => person.id !== personToUpdate.id
             );
-            setPersons(personsUpdated);
+            setPersons(personsUpdated); */
+            setErrorMessage(`${JSON.stringify(error.response.data.error)} `);
+            setTimeout(() => {
+              setErrorMessage(null);
+            }, 5000);
             setNewName("");
             setNewNumber("");
           });
@@ -129,10 +133,19 @@ const App = () => {
         setErrorMessage(`${response.name} added!`);
         setTimeout(() => {
           setErrorMessage(null);
-        }, 3000);
+        }, 5000);
         return;
       })
-      .catch((err) => console.log(err));
+      .catch((error) => {
+        //because error is a response from our server, we don't need to worry about the security flaw with JSON.stringify()
+        //still a security risk
+        console.log(error.response.data.error);
+        const err = JSON.stringify(error.response.data.error);
+        setErrorMessage(`${err}`);
+        setTimeout(() => {
+          setErrorMessage(null);
+        }, 5000);
+      });
     return;
   };
 
