@@ -1,7 +1,7 @@
 {
-  "name": "fullstack-open-2020-part3-thephonebook",
+  "name": "richen-phonebook",
   "version": "1.0.0",
-  "description": "fullstack web application exercise for the FullStack-Open-2020 MOOC",
+  "description": "CRUD fullstack application than manages phone numbers",
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
@@ -10,8 +10,8 @@
     "build:ui": "rm -rf build && npm run build",
     "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "git push heroku master",
-    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push origin master && npm run deploy",
+    "deploy": "git push heroku main",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push origin main && npm run deploy",
     "logs:prod": "heroku logs --tail",
     "lint": "eslint ."
   },
