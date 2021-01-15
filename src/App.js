@@ -1,7 +1,9 @@
-/* eslint react/prop-types: 0 */
+/* eslint-disable indent */
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react'
 import personService from './services/persons'
-import './index.css'
+import './App.css'
+import RichenBadge from './components/RichenBadge.js'
 
 const Notification = ({ message }) => {
   if (message === null) {
@@ -14,9 +16,13 @@ const Notification = ({ message }) => {
 const Filter = ({ search, handleSearchChange }) => {
   return (
     <form>
+      Search:
       <div>
-        Search People:
-        <input value={search} onChange={handleSearchChange} />
+        <input
+          className="form-input"
+          value={search}
+          onChange={handleSearchChange}
+        />
       </div>
     </form>
   )
@@ -30,36 +36,50 @@ const PersonForm = ({
   handleNumberChange,
 }) => {
   return (
-    <form onSubmit={addPerson}>
-      <div>
-        name: <input value={newName} onChange={handleNameChange} />
-      </div>
-      <div>
-        number: <input value={newNumber} onChange={handleNumberChange} />
-      </div>
-      <div>
-        <button type="submit">add</button>
-      </div>
-    </form>
+    <>
+      <h2>Add a New Person</h2>
+      <form onSubmit={addPerson}>
+        Name:
+        <div>
+          <input
+            className="form-input"
+            value={newName}
+            onChange={handleNameChange}
+          />
+        </div>
+        Number:
+        <div>
+          <input
+            className="form-input"
+            value={newNumber}
+            onChange={handleNumberChange}
+          />
+        </div>
+        <div>
+          <button type="submit">Add Person</button>
+        </div>
+      </form>
+    </>
   )
 }
 const Persons = ({ persons, search, showAll, handlePersonDelete }) => {
   const peopleToShow = showAll
     ? persons
     : persons.filter(
-      (people) =>
-        (people.name.toLowerCase().includes(search.toLowerCase()) ||
-            people.number.toString().includes(search)) === true
-    )
+        (people) =>
+          (people.name.toLowerCase().includes(search.toLowerCase()) ||
+            people.number.toString().includes(search)) === true,
+      )
   return (
-    <>
+    <div>
+      <h2>People</h2>
       {peopleToShow.map((person) => (
-        <div key={person.name}>
+        <div className="person" key={person.name}>
           {person.name}: {person.number}
           <button onClick={() => handlePersonDelete(person)}>delete</button>
         </div>
       ))}
-    </>
+    </div>
   )
 }
 
@@ -85,11 +105,11 @@ const App = () => {
     }
     if (persons.some((person) => person.name === personObject.name)) {
       const personToUpdate = persons.find(
-        (person) => person.name === personObject.name
+        (person) => person.name === personObject.name,
       )
       if (
         window.confirm(
-          `Person ${newName}: \n already exists, replace old number with new one?`
+          `Person ${newName}: \n already exists, replace old number with new one?`,
         )
       ) {
         personService
@@ -185,22 +205,33 @@ const App = () => {
   }
 
   return (
-    <div>
-      <h2>Phonebook</h2>
-      <Notification message={errorMessage} />
-      <Filter {...{ search, handleSearchChange }} />
-      <h2>Add a New Person</h2>
-      <PersonForm
-        {...{
-          addPerson,
-          newName,
-          handleNameChange,
-          newNumber,
-          handleNumberChange,
-        }}
-      />
-      <h2>Numbers</h2>
-      <Persons {...{ persons, search, showAll, handlePersonDelete }} />
+    <div id="app-body">
+      <div id="nav-header">
+        <h2>Phonebook Application</h2>
+      </div>
+      <div id="content-container">
+        <div id="form-container">
+          <Notification id="notification" message={errorMessage} />
+          <Filter id="filter" {...{ search, handleSearchChange }} />
+          <PersonForm
+            id="person-form"
+            {...{
+              addPerson,
+              newName,
+              handleNameChange,
+              newNumber,
+              handleNumberChange,
+            }}
+          />
+          <RichenBadge />
+        </div>
+        <div id="person-container">
+          <Persons
+            id="person-output"
+            {...{ persons, search, showAll, handlePersonDelete }}
+          />
+        </div>
+      </div>
     </div>
   )
 }

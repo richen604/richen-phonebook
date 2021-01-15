@@ -1,0 +1,51 @@
+#badge {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: right;
+  align-items: right;
+  padding: 15px;
+}
+
+.left-container {
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+}
+
+.left-container h4 {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.right-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 20px;
+  width: 20rem;
+  height: 50%;
+}
+
+#profile-container {
+  width: 150px;
+  height: 150px;
+  min-width: 150px;
+  min-height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+#profile-img {
+  object-fit: cover;
+  width: 159px;
+  min-width: 159px;
+  height: 150px;
+  min-height: 150px;
+}
+
+.profile-icons {
+  margin: 5px;
+  margin-top: 20px;
+  width: 30px;
+  height: 30px;
+}
