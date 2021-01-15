@@ -4,7 +4,7 @@
   "description": "CRUD fullstack application than manages phone numbers",
   "main": "index.js",
   "scripts": {
-    "build:ui": "rm -rf build && npm run build",
+    "build:ui": "rm -rf build && react-scripts build",
     "dev-server": "NODE_ENV=test nodemon server.js",
     "dev-client": "react-scripts start",
     "test": "echo \"Error: no test specified\" && exit 1",
