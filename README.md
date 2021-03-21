@@ -2,7 +2,7 @@
 
 Visit a production view of the application here at [richen-phonebook](https://richen-phonebook.herokuapp.com/)
 
-Manage your own phone numbers and more with richen-phonebook! This application was built using [NodeJS](https://nodejs.org/en/), [ReactJS](https://reactjs.org/), [MongoDB](https://www.mongodb.com/), [ReduxJS](https://redux.js.org/), [ExpressJS](https://expressjs.com/) and also includes the following frameworks:
+Manage your own phone numbers and more with richen-phonebook! This application was built using [NodeJS](https://nodejs.org/en/), [ReactJS](https://reactjs.org/), [MongoDB](https://www.mongodb.com/), [ExpressJS](https://expressjs.com/) and also includes the following frameworks:
 
 - [ReactStrap](https://reactstrap.github.io/) for pre-generated React components
 - [Mongoose](https://mongoosejs.com/) for MongoDB
