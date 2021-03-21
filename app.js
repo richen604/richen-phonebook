@@ -29,6 +29,10 @@ app.use(express.static(path.join(__dirname, 'build')))
 app.use(express.json())
 app.use(middleware.requestLogger)
 
+app.get('/health', (req, res) => {
+  res.json('ok')
+})
+
 app.use('/api/persons', personsRouter)
 
 app.use(middleware.unknownEndpoint)
