@@ -1,4 +1,6 @@
 import axios from 'axios'
+//for local development 'http://localhost:PORT/api/persons'
+//for production '/api/persons'
 const baseUrl = '/api/persons'
 
 const getAll = () => {
