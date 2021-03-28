@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./PersonForm.css";
+import { Form, FormGroup, Button, Input } from "reactstrap";
 
 const PersonForm = ({
   addPerson,
@@ -11,28 +12,28 @@ const PersonForm = ({
 }) => {
   return (
     <div id="person-form-container">
-      <h5>Add a New Person</h5>
-      <form onSubmit={addPerson}>
-        Name:
-        <div>
-          <input
+      <h5 id="person-form-title">Add a New Person</h5>
+      <Form id="person-form" onSubmit={addPerson}>
+        <FormGroup>
+          <Input
             className="form-input"
             value={newName}
             onChange={handleNameChange}
+            placeholder="Type Name Here..."
           />
-        </div>
-        Number:
-        <div>
-          <input
+        </FormGroup>
+        <FormGroup>
+          <Input
             className="form-input"
             value={newNumber}
             onChange={handleNumberChange}
+            placeholder="Type Number Here..."
           />
-        </div>
-        <div>
-          <button type="submit">Add Person</button>
-        </div>
-      </form>
+        </FormGroup>
+        <Button id="person-form-button" type="submit">
+          Add Person
+        </Button>
+      </Form>
     </div>
   );
 };
@@ -41,7 +42,7 @@ PersonForm.propTypes = {
   addPerson: PropTypes.func,
   newName: PropTypes.string,
   handleNameChange: PropTypes.func,
-  newNumber: PropTypes.number,
+  newNumber: PropTypes.string,
   handleNumberChange: PropTypes.func,
 };
 

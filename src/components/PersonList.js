@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./PersonList.css";
+import { Button } from "reactstrap";
 
 const PersonList = ({ persons, search, showAll, handlePersonDelete }) => {
   const peopleToShow = showAll
@@ -12,11 +13,16 @@ const PersonList = ({ persons, search, showAll, handlePersonDelete }) => {
       );
   return (
     <div id="person-container">
-      <h2>People</h2>
+      <h4>People</h4>
       {peopleToShow.map((person) => (
         <div className="person" key={person.name}>
           {person.name}: {person.number}
-          <button onClick={() => handlePersonDelete(person)}>delete</button>
+          <Button
+            className="personlist-button"
+            onClick={() => handlePersonDelete(person)}
+          >
+            Delete
+          </Button>
         </div>
       ))}
     </div>
