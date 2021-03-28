@@ -1,0 +1,14 @@
+@media screen and (max-width: 600px) {
+  #person-container {
+    margin: 20px 0;
+  }
+}
+
+@media screen and (min-width: 600px) {
+}
+
+@media screen and (min-width: 786px) {
+}
+
+#person-container {
+}

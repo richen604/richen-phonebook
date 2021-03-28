@@ -1,14 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
+import "./PersonList.css";
 
 const PersonList = ({ persons, search, showAll, handlePersonDelete }) => {
   const peopleToShow = showAll
     ? persons
     : persons.filter(
-      (people) =>
-        (people.name.toLowerCase().includes(search.toLowerCase()) ||
+        (people) =>
+          (people.name.toLowerCase().includes(search.toLowerCase()) ||
             people.number.toString().includes(search)) === true
-    )
+      );
   return (
     <div id="person-container">
       <h2>People</h2>
@@ -19,14 +20,14 @@ const PersonList = ({ persons, search, showAll, handlePersonDelete }) => {
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
 PersonList.propTypes = {
   persons: PropTypes.array,
   search: PropTypes.string,
   showAll: PropTypes.bool,
   handlePersonDelete: PropTypes.func,
-}
+};
 
-export default PersonList
+export default PersonList;

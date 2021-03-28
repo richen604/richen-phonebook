@@ -1,5 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
+import "./PersonForm.css";
 
 const PersonForm = ({
   addPerson,
@@ -9,8 +10,8 @@ const PersonForm = ({
   handleNumberChange,
 }) => {
   return (
-    <>
-      <h2>Add a New Person</h2>
+    <div id="person-form-container">
+      <h5>Add a New Person</h5>
       <form onSubmit={addPerson}>
         Name:
         <div>
@@ -32,9 +33,9 @@ const PersonForm = ({
           <button type="submit">Add Person</button>
         </div>
       </form>
-    </>
-  )
-}
+    </div>
+  );
+};
 
 PersonForm.propTypes = {
   addPerson: PropTypes.func,
@@ -42,6 +43,6 @@ PersonForm.propTypes = {
   handleNameChange: PropTypes.func,
   newNumber: PropTypes.number,
   handleNumberChange: PropTypes.func,
-}
+};
 
-export default PersonForm
+export default PersonForm;

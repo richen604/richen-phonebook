@@ -1,0 +1,18 @@
+#header-nav-brand {
+  color: #ffffff;
+}
+
+#header-navbar {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: left;
+  align-items: center;
+  flex-direction: row;
+  width: 100vw;
+  height: 80px;
+  background-color: #575a89;
+}
+
+#filter-input {
+  width: 300px;
+}
