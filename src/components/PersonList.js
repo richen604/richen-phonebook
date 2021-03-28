@@ -7,10 +7,10 @@ const PersonList = ({ persons, search, showAll, handlePersonDelete }) => {
     : persons.filter(
       (people) =>
         (people.name.toLowerCase().includes(search.toLowerCase()) ||
-            people.number.toString().includes(search)) === true,
+            people.number.toString().includes(search)) === true
     )
   return (
-    <div>
+    <div id="person-container">
       <h2>People</h2>
       {peopleToShow.map((person) => (
         <div className="person" key={person.name}>

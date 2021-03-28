@@ -58,8 +58,7 @@
   "eslint": "^7.16.0",
   "eslint-config-prettier": "^7.1.0",
   "nodemon": "^2.0.6",
-  "prettier": "^2.2.1",
-  "prettier-eslint": "^12.0.0"
+  "prettier": "^2.2.1"
  },
  "proxy": "http://localhost:3001",
  "engines": {
