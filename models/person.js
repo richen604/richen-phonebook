@@ -10,7 +10,7 @@ const personSchema = new mongoose.Schema({
   number: {
     type: String,
     required: true,
-    maxlength: 8,
+    maxlength: 14,
   },
 })
 personSchema.plugin(uniqueValidator)
