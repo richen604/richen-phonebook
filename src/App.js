@@ -4,84 +4,10 @@ import React, { useState, useEffect } from 'react'
 import personService from './services/persons'
 import './App.css'
 import RichenBadge from './components/RichenBadge.js'
-
-const Notification = ({ message }) => {
-  if (message === null) {
-    return null
-  }
-
-  return <div className="error">{message}</div>
-}
-
-const Filter = ({ search, handleSearchChange }) => {
-  return (
-    <form>
-      Search:
-      <div>
-        <input
-          className="form-input"
-          value={search}
-          onChange={handleSearchChange}
-        />
-      </div>
-    </form>
-  )
-}
-
-const PersonForm = ({
-  addPerson,
-  newName,
-  handleNameChange,
-  newNumber,
-  handleNumberChange,
-}) => {
-  return (
-    <>
-      <h2>Add a New Person</h2>
-      <form onSubmit={addPerson}>
-        Name:
-        <div>
-          <input
-            className="form-input"
-            value={newName}
-            onChange={handleNameChange}
-          />
-        </div>
-        Number:
-        <div>
-          <input
-            className="form-input"
-            value={newNumber}
-            onChange={handleNumberChange}
-          />
-        </div>
-        <div>
-          <button type="submit">Add Person</button>
-        </div>
-      </form>
-    </>
-  )
-}
-const Persons = ({ persons, search, showAll, handlePersonDelete }) => {
-  const peopleToShow = showAll
-    ? persons
-    : persons.filter(
-        (people) =>
-          (people.name.toLowerCase().includes(search.toLowerCase()) ||
-            people.number.toString().includes(search)) === true,
-      )
-  return (
-    <div>
-      <h2>People</h2>
-      {peopleToShow.map((person) => (
-        <div className="person" key={person.name}>
-          {person.name}: {person.number}
-          <button onClick={() => handlePersonDelete(person)}>delete</button>
-        </div>
-      ))}
-    </div>
-  )
-}
+import Notification from './components/Notification'
+import Filter from './components/Filter'
+import PersonForm from './components/PersonForm'
+import PersonList from './components/PersonList'
 
 const App = () => {
   const [persons, setPersons] = useState([])
@@ -226,7 +152,7 @@ const App = () => {
           <RichenBadge />
         </div>
         <div id="person-container">
-          <Persons
+          <PersonList
             id="person-output"
             {...{ persons, search, showAll, handlePersonDelete }}
           />
